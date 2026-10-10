@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+
+# artefak dbt
+dbt_project/target/
+dbt_project/logs/
+dbt_project/dbt_packages/
+dbt_project/.user.yml
+*.duckdb.wal
+
+# artefak kompilasi LaTeX (laporan.tex dan laporan.pdf tetap disimpan)
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.toc
+docs/*.fls
+docs/*.fdb_latexmk
+docs/*.synctex.gz

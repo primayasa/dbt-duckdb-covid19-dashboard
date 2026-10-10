@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: mart_covid_monthly_province
+    description: "Ringkasan bulanan COVID-19 per provinsi: total kasus, kematian, dan kesembuhan baru beserta CFR, recovery rate, dan kasus per 100 ribu penduduk. Diagregasi dari stg_covid_daily dan digabung dengan stg_airflow_monthly_summary untuk rekonsiliasi. Satu baris per provinsi per bulan."
+    columns:
+      - name: province_month_key
+        description: "Primary key: gabungan kode provinsi dan bulan, misalnya ID-JK-2021-07"
+        data_tests:
+          - unique
+          - not_null
+      - name: report_month
+        description: "Tanggal awal bulan laporan"
+        data_tests:
+          - not_null
+      - name: province_code
+        description: "Kode ISO 3166-2 provinsi"
+        data_tests:
+          - not_null
+      - name: bps_province_code
+        description: "Kode provinsi BPS (dua digit), kunci wilayah untuk peta di dashboard"
+        data_tests:
+          - not_null
+      - name: province_name
+        description: "Nama provinsi"
+        data_tests:
+          - not_null
+      - name: island
+        description: "Kelompok pulau provinsi"
+      - name: population
+        description: "Jumlah penduduk provinsi"
+      - name: reporting_days
+        description: "Jumlah hari yang memiliki laporan pada bulan tersebut"
+      - name: new_cases
+        description: "Total kasus terkonfirmasi baru pada bulan tersebut"
+        data_tests:
+          - not_null
+      - name: new_deaths
+        description: "Total kematian baru pada bulan tersebut"
+      - name: new_recovered
+        description: "Total pasien sembuh baru pada bulan tersebut"
+      - name: case_fatality_rate_pct
+        description: "Case fatality rate bulanan = kematian baru / kasus baru x 100; NULL bila tidak ada kasus baru"
+      - name: recovery_rate_pct
+        description: "Recovery rate bulanan = sembuh baru / kasus baru x 100; bisa di atas 100 karena kesembuhan tertinggal dari kasus"
+      - name: new_cases_per_100k
+        description: "Kasus baru sebulan per 100.000 penduduk"
+      - name: airflow_new_cases
+        description: "Total kasus baru bulan yang sama menurut output Airflow"
+      - name: is_reconciled_with_airflow
+        description: "True bila kasus, kematian, dan sembuh hasil dbt sama persis dengan output Airflow"
+
+  - name: mart_covid_daily_province
+    description: "Fakta harian COVID-19 per provinsi untuk analisis tren. Materialization incremental: hanya tanggal yang lebih baru dari isi tabel yang diproses. Satu baris per provinsi per tanggal."
+    columns:
+      - name: report_date
+        description: "Tanggal laporan"
+        data_tests:
+          - not_null
+      - name: province_code
+        description: "Kode ISO 3166-2 provinsi"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('mart_covid_monthly_province')
+                field: province_code
+      - name: bps_province_code
+        description: "Kode provinsi BPS (dua digit), kunci wilayah untuk peta di dashboard"
+      - name: province_name
+        description: "Nama provinsi"
+      - name: island
+        description: "Kelompok pulau provinsi"
+      - name: population
+        description: "Jumlah penduduk provinsi"
+      - name: new_cases
+        description: "Kasus terkonfirmasi baru"
+      - name: new_deaths
+        description: "Kematian baru"
+      - name: new_recovered
+        description: "Pasien sembuh baru"
+      - name: total_cases
+        description: "Kasus kumulatif menurut sumber"
+      - name: total_deaths
+        description: "Kematian kumulatif menurut sumber"
+      - name: total_recovered
+        description: "Sembuh kumulatif menurut sumber"
+      - name: total_active_cases
+        description: "Kasus aktif kumulatif; NULL bila nilai sumber negatif"
+      - name: new_cases_per_100k
+        description: "Kasus baru harian per 100.000 penduduk"

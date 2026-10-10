@@ -1,0 +1,81 @@
+# Urutan start: dbt (load raw -> run -> test -> docs) selesai dulu, baru
+# Metabase menyala, lalu metabase-setup membuat dashboard lewat API.
+# DuckDB hanya mengizinkan satu proses penulis, jadi hentikan Metabase
+# (docker compose stop metabase) sebelum menjalankan ulang dbt.
+
+services:
+  dbt:
+    build:
+      context: .
+      dockerfile: docker/dbt.Dockerfile
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: >
+      sh -c "python scripts/load_raw.py
+      && cd dbt_project
+      && dbt seed
+      && dbt run
+      && dbt test
+      && dbt docs generate"
+
+  dbt-docs:
+    build:
+      context: .
+      dockerfile: docker/dbt.Dockerfile
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    volumes:
+      - .:/workspace
+    command: python -m http.server 8081 --directory /workspace/dbt_project/target
+    ports:
+      - "8081:8081"
+    depends_on:
+      dbt:
+        condition: service_completed_successfully
+
+  metabase:
+    build:
+      context: .
+      dockerfile: docker/metabase.Dockerfile
+    environment:
+      MB_DB_FILE: /metabase-data/metabase.db
+      MB_SITE_NAME: "Tugas dbt dan BI Dashboard 574012"
+      MB_ANON_TRACKING_ENABLED: "false"
+      MB_CHECK_FOR_UPDATES: "false"
+      JAVA_TOOL_OPTIONS: "-Xmx1g"
+    volumes:
+      - ./data:/data:ro
+      - metabase-data:/metabase-data
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+    depends_on:
+      dbt:
+        condition: service_completed_successfully
+
+  metabase-setup:
+    build:
+      context: .
+      dockerfile: docker/dbt.Dockerfile
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    environment:
+      MB_URL: http://metabase:3000
+      MB_ADMIN_EMAIL: "${MB_ADMIN_EMAIL:-admin@tugas.local}"
+      MB_ADMIN_PASSWORD: "${MB_ADMIN_PASSWORD:-Tugas574012!}"
+      MB_DUCKDB_PATH: /data/warehouse.duckdb
+      MB_GEOJSON_URL: "${MB_GEOJSON_URL:-}"
+    volumes:
+      - .:/workspace
+    command: python dashboard/setup_metabase.py
+    depends_on:
+      metabase:
+        condition: service_healthy
+
+volumes:
+  metabase-data:

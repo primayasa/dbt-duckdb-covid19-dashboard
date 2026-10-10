@@ -1,0 +1,3247 @@
+{
+  "description": "Perkembangan dan sebaran COVID-19 di Indonesia, Maret 2020 sampai September 2022. Sumber: mart dbt di atas output Airflow.",
+  "archived": false,
+  "view_count": 0,
+  "collection_position": null,
+  "dashcards": [
+    {
+      "size_x": 6,
+      "dashboard_tab_id": 7,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "lib/deduplicated-name": "kasus",
+            "lib/original-name": "kasus",
+            "name": "kasus",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kasus",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "kasus",
+            "display_name": "Kasus",
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Total kasus terkonfirmasi",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.22292Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.22292Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "source-table": 10,
+              "lib/type": "mbql.stage/mbql",
+              "aggregation": [
+                [
+                  "sum",
+                  {
+                    "name": "kasus",
+                    "lib/uuid": "998e7d53-292c-4d51-b1f3-e710864219b3",
+                    "display-name": "Kasus"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "851866c7-4300-4e33-bafd-16d0dcb177b5",
+                      "effective-type": "type/BigInteger"
+                    },
+                    94
+                  ]
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 53,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "2jnnTBvAvntV75qQ8ZR__",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.22292Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 0,
+      "id": 50,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 53,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 53,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 53,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 53,
+      "entity_id": "YC33A2cschSsSnyrC9V1b",
+      "visualization_settings": {},
+      "size_y": 3,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 0
+    },
+    {
+      "size_x": 6,
+      "dashboard_tab_id": 7,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "lib/deduplicated-name": "kematian",
+            "lib/original-name": "kematian",
+            "name": "kematian",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kematian",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "kematian",
+            "display_name": "Kematian",
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Total kematian",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.268085Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.268085Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "source-table": 10,
+              "lib/type": "mbql.stage/mbql",
+              "aggregation": [
+                [
+                  "sum",
+                  {
+                    "name": "kematian",
+                    "lib/uuid": "2ac32054-d88e-456e-b583-6a2a0b1ce133",
+                    "display-name": "Kematian"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "c0226e4d-99f6-436a-9301-520527117c1f",
+                      "effective-type": "type/BigInteger"
+                    },
+                    95
+                  ]
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 54,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "-H5YEGqINADz8Spz3DSeo",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.268085Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 6,
+      "id": 51,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 54,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 54,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 54,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 54,
+      "entity_id": "2Y_toHVid6KyP1KxR-CXi",
+      "visualization_settings": {},
+      "size_y": 3,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 0
+    },
+    {
+      "size_x": 6,
+      "dashboard_tab_id": 7,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "lib/deduplicated-name": "sembuh",
+            "lib/original-name": "sembuh",
+            "name": "sembuh",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "sembuh",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "sembuh",
+            "display_name": "Sembuh",
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Total sembuh",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.303623Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.303623Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "source-table": 10,
+              "lib/type": "mbql.stage/mbql",
+              "aggregation": [
+                [
+                  "sum",
+                  {
+                    "name": "sembuh",
+                    "lib/uuid": "f52ccde0-2a0c-48fa-9dfc-f7b1ba68abed",
+                    "display-name": "Sembuh"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "9bdf5460-2b0c-4168-8905-9165a07a588d",
+                      "effective-type": "type/BigInteger"
+                    },
+                    96
+                  ]
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 55,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "WEmJu40f2sLfBWs_J_7Fe",
+        "collection_preview": true,
+        "visualization_settings": {},
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.303623Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 12,
+      "id": 52,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 55,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 55,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 55,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 55,
+      "entity_id": "fTm1AmIyjYcOI9cGVbPbp",
+      "visualization_settings": {},
+      "size_y": 3,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 0
+    },
+    {
+      "size_x": 6,
+      "dashboard_tab_id": 7,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "lib/deduplicated-name": "cfr",
+            "lib/original-name": "cfr",
+            "name": "cfr",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "cfr",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "cfr",
+            "display_name": "CFR (%)",
+            "base_type": "type/Float"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Case fatality rate",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.34342Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.34342Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "source-table": 10,
+              "lib/type": "mbql.stage/mbql",
+              "aggregation": [
+                [
+                  "*",
+                  {
+                    "name": "cfr",
+                    "lib/uuid": "7c921099-8ef3-43c4-9d99-26a9679f2bce",
+                    "display-name": "CFR (%)"
+                  },
+                  [
+                    "/",
+                    {
+                      "lib/uuid": "e45b1f70-7d50-47b2-8d7b-0152fbc0ffa2"
+                    },
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "b793caca-1e77-4dac-85dc-7de39877aa00"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "2e181d78-9245-4c3a-ab23-6a504cb5fe25",
+                          "effective-type": "type/BigInteger"
+                        },
+                        95
+                      ]
+                    ],
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "4cd3d698-d23a-48c5-b003-a5dfc7988fba"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "f00fb9cb-c46b-4ea7-8b26-bda845895c15",
+                          "effective-type": "type/BigInteger"
+                        },
+                        94
+                      ]
+                    ]
+                  ],
+                  100
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 56,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "scalar",
+        "archived_directly": false,
+        "entity_id": "KjYa6-kptRJkyiYBy1iJg",
+        "collection_preview": true,
+        "visualization_settings": {
+          "column_settings": {
+            "[\"name\",\"cfr\"]": {
+              "suffix": "%",
+              "decimals": 2
+            }
+          }
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.34342Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 18,
+      "id": 53,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 56,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 56,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 56,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 56,
+      "entity_id": "3Z5LSsiqLtaAlcnuOHQCV",
+      "visualization_settings": {},
+      "size_y": 3,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 0
+    },
+    {
+      "size_x": 14,
+      "dashboard_tab_id": 7,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 9,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "table_id": 9,
+            "lib/temporal-unit": "week",
+            "lib/deduplicated-name": "report_date",
+            "lib/original-name": "report_date",
+            "lib/breakout?": true,
+            "unit": "week",
+            "name": "report_date",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "report_date",
+            "lib/original-display-name": "Report Date",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              72,
+              {
+                "temporal-unit": "week"
+              }
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Date",
+            "active": true,
+            "id": 72,
+            "lib/desired-column-alias": "report_date",
+            "position": 0,
+            "visibility_type": "normal",
+            "inherited_temporal_unit": "week",
+            "display_name": "Report Date: Week",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 315,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2020-03-01",
+                  "latest": "2021-01-09",
+                  "mode-fraction": 0.0034,
+                  "top-3-fraction": 0.0102
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "lib/deduplicated-name": "kasus",
+            "lib/original-name": "kasus",
+            "name": "kasus",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kasus",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "kasus",
+            "display_name": "Kasus baru per minggu",
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Kasus baru per minggu",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.38135Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.38135Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "aggregation": [
+                [
+                  "sum",
+                  {
+                    "name": "kasus",
+                    "lib/uuid": "3f98a895-6dff-4107-8ecc-e0049f4c519f",
+                    "display-name": "Kasus baru per minggu"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "9fe46644-5c5b-497e-acb7-a06efb268b43",
+                      "effective-type": "type/BigInteger"
+                    },
+                    78
+                  ]
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 9,
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Date",
+                    "temporal-unit": "week",
+                    "lib/uuid": "d1c9f192-71e5-4e86-8602-796be5a2b34f",
+                    "effective-type": "type/Date"
+                  },
+                  72
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 57,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "ws298FqNaRiTpVYdIBMGM",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "report_date"
+          ],
+          "graph.x_axis.title_text": "",
+          "graph.y_axis.title_text": "Kasus baru per minggu",
+          "series_settings": {
+            "kasus": {
+              "color": "#2E6FB7"
+            }
+          },
+          "graph.metrics": [
+            "kasus"
+          ]
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.38135Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 0,
+      "id": 54,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 57,
+          "target": [
+            "dimension",
+            [
+              "field",
+              76,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 57,
+          "target": [
+            "dimension",
+            [
+              "field",
+              75,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 57,
+          "target": [
+            "dimension",
+            [
+              "field",
+              72,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 57,
+      "entity_id": "y1Ld48lIdVF8IaXkdUbX_",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 3
+    },
+    {
+      "size_x": 14,
+      "dashboard_tab_id": 7,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 9,
+        "result_metadata": [
+          {
+            "database_type": "DATE",
+            "table_id": 9,
+            "lib/temporal-unit": "week",
+            "lib/deduplicated-name": "report_date",
+            "lib/original-name": "report_date",
+            "lib/breakout?": true,
+            "unit": "week",
+            "name": "report_date",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "report_date",
+            "lib/original-display-name": "Report Date",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              72,
+              {
+                "temporal-unit": "week"
+              }
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Date",
+            "active": true,
+            "id": 72,
+            "lib/desired-column-alias": "report_date",
+            "position": 0,
+            "visibility_type": "normal",
+            "inherited_temporal_unit": "week",
+            "display_name": "Report Date: Week",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 315,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/DateTime": {
+                  "earliest": "2020-03-01",
+                  "latest": "2021-01-09",
+                  "mode-fraction": 0.0034,
+                  "top-3-fraction": 0.0102
+                }
+              }
+            },
+            "base_type": "type/Date"
+          },
+          {
+            "lib/deduplicated-name": "kematian",
+            "lib/original-name": "kematian",
+            "name": "kematian",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kematian",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "kematian",
+            "display_name": "Kematian baru per minggu",
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Kematian baru per minggu",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.417805Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.417805Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "aggregation": [
+                [
+                  "sum",
+                  {
+                    "name": "kematian",
+                    "lib/uuid": "e1337db9-5577-4388-8ac8-ded5cc1d2129",
+                    "display-name": "Kematian baru per minggu"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "6e727abe-4a8f-4955-9276-fa27e8dc8da5",
+                      "effective-type": "type/BigInteger"
+                    },
+                    79
+                  ]
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 9,
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Date",
+                    "temporal-unit": "week",
+                    "lib/uuid": "bb1e70d8-aae4-44f6-a30b-ea0fdd6d9738",
+                    "effective-type": "type/Date"
+                  },
+                  72
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 58,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "line",
+        "archived_directly": false,
+        "entity_id": "Xf03LY4Jn4POR-NvzHTMn",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "report_date"
+          ],
+          "graph.x_axis.title_text": "",
+          "graph.y_axis.title_text": "Kematian baru per minggu",
+          "series_settings": {
+            "kematian": {
+              "color": "#C0392B"
+            }
+          },
+          "graph.metrics": [
+            "kematian"
+          ]
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.417805Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 0,
+      "id": 55,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 58,
+          "target": [
+            "dimension",
+            [
+              "field",
+              76,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 58,
+          "target": [
+            "dimension",
+            [
+              "field",
+              75,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 58,
+          "target": [
+            "dimension",
+            [
+              "field",
+              72,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 58,
+      "entity_id": "9yVKYiM7P5H50rVX41KYZ",
+      "visualization_settings": {},
+      "size_y": 7,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 10
+    },
+    {
+      "size_x": 10,
+      "dashboard_tab_id": 7,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "table_id": 10,
+            "lib/deduplicated-name": "province_name",
+            "lib/original-name": "province_name",
+            "lib/breakout?": true,
+            "name": "province_name",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "province_name",
+            "lib/original-display-name": "Province Name",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              90,
+              null
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Text",
+            "active": true,
+            "id": 90,
+            "lib/desired-column-alias": "province_name",
+            "position": 4,
+            "visibility_type": "normal",
+            "display_name": "Province Name",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 12.615019011406844,
+                  "mode-fraction": 0.029467680608365018,
+                  "top-3-fraction": 0.08840304182509506
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "lib/deduplicated-name": "kasus",
+            "lib/original-name": "kasus",
+            "name": "kasus",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kasus",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "kasus",
+            "display_name": "Kasus",
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "10 provinsi dengan kasus terbanyak",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.459803Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.459803Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "order-by": [
+                [
+                  "desc",
+                  {
+                    "lib/uuid": "e7142b5a-5adf-4d80-b9c6-e39546767e4d"
+                  },
+                  [
+                    "aggregation",
+                    {
+                      "lib/uuid": "b105813c-ae27-4962-b4b5-2551ad902845"
+                    },
+                    "89f36ec2-3a30-4d30-bd63-d6c484338c72"
+                  ]
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 10,
+              "aggregation": [
+                [
+                  "sum",
+                  {
+                    "name": "kasus",
+                    "lib/uuid": "89f36ec2-3a30-4d30-bd63-d6c484338c72",
+                    "display-name": "Kasus"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "93e385a0-f7a8-4fe9-966d-b19e857946bf",
+                      "effective-type": "type/BigInteger"
+                    },
+                    94
+                  ]
+                ]
+              ],
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Text",
+                    "lib/uuid": "7a427f71-9c1e-47a7-9f6a-fa1720427173",
+                    "effective-type": "type/Text"
+                  },
+                  90
+                ]
+              ],
+              "limit": 10
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 59,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "row",
+        "archived_directly": false,
+        "entity_id": "s9KN5Dww7KpljjNln0v7P",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "province_name"
+          ],
+          "graph.x_axis.title_text": "",
+          "graph.y_axis.title_text": "",
+          "graph.show_values": true,
+          "series_settings": {
+            "kasus": {
+              "color": "#2E6FB7"
+            }
+          },
+          "graph.metrics": [
+            "kasus"
+          ]
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.459803Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 14,
+      "id": 56,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 59,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 59,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 59,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 59,
+      "entity_id": "gzqBs_ZTeWXgM190ANN6c",
+      "visualization_settings": {},
+      "size_y": 8,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 3
+    },
+    {
+      "size_x": 10,
+      "dashboard_tab_id": 7,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "semantic_type": "type/Category",
+            "table_id": 10,
+            "lib/deduplicated-name": "island",
+            "lib/original-name": "island",
+            "lib/breakout?": true,
+            "name": "island",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "island",
+            "lib/original-display-name": "Island",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              91,
+              null
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Text",
+            "active": true,
+            "id": 91,
+            "lib/desired-column-alias": "island",
+            "position": 5,
+            "visibility_type": "normal",
+            "display_name": "Island",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 7,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 7.730038022813688,
+                  "mode-fraction": 0.2946768060836502,
+                  "top-3-fraction": 0.6473384030418251
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "lib/deduplicated-name": "kasus",
+            "lib/original-name": "kasus",
+            "name": "kasus",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kasus",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "kasus",
+            "display_name": "Kasus",
+            "base_type": "type/BigInteger"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Kasus menurut pulau",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.496456Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.496456Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Text",
+                    "lib/uuid": "87194505-46cb-4c11-9903-b59e17cabb0f",
+                    "effective-type": "type/Text"
+                  },
+                  91
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 10,
+              "aggregation": [
+                [
+                  "sum",
+                  {
+                    "name": "kasus",
+                    "lib/uuid": "4a0eb3d9-3baa-447b-8146-43f59c3f704c",
+                    "display-name": "Kasus"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "774cb259-c704-4680-b598-7e32f8557838",
+                      "effective-type": "type/BigInteger"
+                    },
+                    94
+                  ]
+                ]
+              ],
+              "order-by": [
+                [
+                  "desc",
+                  {
+                    "lib/uuid": "2cf00872-98d7-4048-a480-9039e600cafe"
+                  },
+                  [
+                    "aggregation",
+                    {
+                      "lib/uuid": "eb4e1302-73fa-410e-a29b-4c3fe078ef84"
+                    },
+                    "4a0eb3d9-3baa-447b-8146-43f59c3f704c"
+                  ]
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 60,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "bar",
+        "archived_directly": false,
+        "entity_id": "aHwmbLbgnQIhlV-bi-k5h",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "island"
+          ],
+          "graph.x_axis.title_text": "",
+          "graph.y_axis.title_text": "",
+          "graph.show_values": true,
+          "series_settings": {
+            "kasus": {
+              "color": "#2E6FB7"
+            }
+          },
+          "graph.metrics": [
+            "kasus"
+          ]
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.496456Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 14,
+      "id": 57,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 60,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 60,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 60,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 60,
+      "entity_id": "BRkvgs_sTcK1Bvlf83q9Q",
+      "visualization_settings": {},
+      "size_y": 6,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 11
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 8,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "table_id": 10,
+            "lib/deduplicated-name": "province_name",
+            "lib/original-name": "province_name",
+            "lib/breakout?": true,
+            "name": "province_name",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "province_name",
+            "lib/original-display-name": "Province Name",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              90,
+              null
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Text",
+            "active": true,
+            "id": 90,
+            "lib/desired-column-alias": "province_name",
+            "position": 4,
+            "visibility_type": "normal",
+            "display_name": "Province Name",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 12.615019011406844,
+                  "mode-fraction": 0.029467680608365018,
+                  "top-3-fraction": 0.08840304182509506
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "lib/deduplicated-name": "cfr",
+            "lib/original-name": "cfr",
+            "name": "cfr",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "cfr",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "cfr",
+            "display_name": "CFR (%)",
+            "base_type": "type/Float"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "10 provinsi dengan CFR tertinggi",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.533822Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.533822Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "order-by": [
+                [
+                  "desc",
+                  {
+                    "lib/uuid": "319e0a76-c3f9-41ef-be30-a6a05e17fbad"
+                  },
+                  [
+                    "aggregation",
+                    {
+                      "lib/uuid": "55083f95-3a8c-4da0-aff5-022fd4f74bd3"
+                    },
+                    "e9ec4111-f226-4588-aa4c-9e106d535b29"
+                  ]
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 10,
+              "aggregation": [
+                [
+                  "*",
+                  {
+                    "name": "cfr",
+                    "lib/uuid": "e9ec4111-f226-4588-aa4c-9e106d535b29",
+                    "display-name": "CFR (%)"
+                  },
+                  [
+                    "/",
+                    {
+                      "lib/uuid": "0f564e28-9ab6-401d-a6b8-20ba1fc9e1dd"
+                    },
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "bc29171d-7416-46b9-9240-12074c293533"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "5af1b4cb-8a81-4dcf-ab21-5a372f2045d6",
+                          "effective-type": "type/BigInteger"
+                        },
+                        95
+                      ]
+                    ],
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "aff0fea7-e8c1-4a31-8a35-ec74dd85f04b"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "6e9547aa-8a59-4b63-9590-4b1427388f13",
+                          "effective-type": "type/BigInteger"
+                        },
+                        94
+                      ]
+                    ]
+                  ],
+                  100
+                ]
+              ],
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Text",
+                    "lib/uuid": "facc0773-d561-4f2a-b740-2855b281fbf9",
+                    "effective-type": "type/Text"
+                  },
+                  90
+                ]
+              ],
+              "limit": 10
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 61,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "row",
+        "archived_directly": false,
+        "entity_id": "eQX9-r8Bxd0Kl0F1i1mwY",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "province_name"
+          ],
+          "graph.x_axis.title_text": "",
+          "graph.y_axis.title_text": "",
+          "graph.show_values": true,
+          "series_settings": {
+            "cfr": {
+              "color": "#C0392B"
+            }
+          },
+          "column_settings": {
+            "[\"name\",\"cfr\"]": {
+              "suffix": "%",
+              "decimals": 2
+            }
+          },
+          "graph.metrics": [
+            "cfr"
+          ]
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.533822Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 0,
+      "id": 58,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 61,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 61,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 61,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 61,
+      "entity_id": "aVrCOHCoCfrrWhXOu7N6u",
+      "visualization_settings": {},
+      "size_y": 8,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 0
+    },
+    {
+      "size_x": 12,
+      "dashboard_tab_id": 8,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "table_id": 10,
+            "lib/deduplicated-name": "province_name",
+            "lib/original-name": "province_name",
+            "lib/breakout?": true,
+            "name": "province_name",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "province_name",
+            "lib/original-display-name": "Province Name",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              90,
+              null
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Text",
+            "active": true,
+            "id": 90,
+            "lib/desired-column-alias": "province_name",
+            "position": 4,
+            "visibility_type": "normal",
+            "display_name": "Province Name",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 12.615019011406844,
+                  "mode-fraction": 0.029467680608365018,
+                  "top-3-fraction": 0.08840304182509506
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "lib/deduplicated-name": "kasus_per_100rb",
+            "lib/original-name": "kasus_per_100rb",
+            "name": "kasus_per_100rb",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kasus_per_100rb",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "kasus_per_100rb",
+            "display_name": "Kasus per 100 ribu penduduk",
+            "base_type": "type/Float"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "10 provinsi dengan kasus per 100 ribu penduduk tertinggi",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.571233Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.571233Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "order-by": [
+                [
+                  "desc",
+                  {
+                    "lib/uuid": "6a7051e4-cf0a-45c0-866c-b658fa3abe75"
+                  },
+                  [
+                    "aggregation",
+                    {
+                      "lib/uuid": "bdd6bb7d-d4ca-43bc-bc9a-7620296d6900"
+                    },
+                    "951456b6-e01b-4be6-9989-96f884aa1ee4"
+                  ]
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 10,
+              "aggregation": [
+                [
+                  "/",
+                  {
+                    "name": "kasus_per_100rb",
+                    "lib/uuid": "951456b6-e01b-4be6-9989-96f884aa1ee4",
+                    "display-name": "Kasus per 100 ribu penduduk"
+                  },
+                  [
+                    "*",
+                    {
+                      "lib/uuid": "da3a145a-30a3-4614-b415-5c3dbf6cd197"
+                    },
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "2cdee9aa-d267-45c1-a1d5-eb3e7db509bb"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "3077110c-c94d-4271-93d7-2332ededb06b",
+                          "effective-type": "type/BigInteger"
+                        },
+                        94
+                      ]
+                    ],
+                    100000
+                  ],
+                  [
+                    "max",
+                    {
+                      "lib/uuid": "0d8329b7-f17b-4aed-9991-020660bf23a9"
+                    },
+                    [
+                      "field",
+                      {
+                        "base-type": "type/BigInteger",
+                        "lib/uuid": "62324f74-fc7f-4c59-98d0-d3fd7bb877d9",
+                        "effective-type": "type/BigInteger"
+                      },
+                      92
+                    ]
+                  ]
+                ]
+              ],
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Text",
+                    "lib/uuid": "55e6b175-c00e-41bf-9ba2-f6847a5ed4f8",
+                    "effective-type": "type/Text"
+                  },
+                  90
+                ]
+              ],
+              "limit": 10
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 62,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "row",
+        "archived_directly": false,
+        "entity_id": "q0m3vpp4Euj3GcpJNxVoa",
+        "collection_preview": true,
+        "visualization_settings": {
+          "graph.dimensions": [
+            "province_name"
+          ],
+          "graph.x_axis.title_text": "",
+          "graph.y_axis.title_text": "",
+          "graph.show_values": true,
+          "series_settings": {
+            "kasus_per_100rb": {
+              "color": "#2E6FB7"
+            }
+          },
+          "column_settings": {
+            "[\"name\",\"kasus_per_100rb\"]": {
+              "decimals": 0
+            }
+          },
+          "graph.metrics": [
+            "kasus_per_100rb"
+          ]
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.571233Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 12,
+      "id": 59,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 62,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 62,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 62,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 62,
+      "entity_id": "tvX8k1jJH9PwaNH-ZAgdO",
+      "visualization_settings": {},
+      "size_y": 8,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 0
+    },
+    {
+      "size_x": 24,
+      "dashboard_tab_id": 8,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "table_id": 10,
+            "lib/deduplicated-name": "province_name",
+            "lib/original-name": "province_name",
+            "lib/breakout?": true,
+            "name": "province_name",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "province_name",
+            "lib/original-display-name": "Province Name",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              90,
+              null
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Text",
+            "active": true,
+            "id": 90,
+            "lib/desired-column-alias": "province_name",
+            "position": 4,
+            "visibility_type": "normal",
+            "display_name": "Province Name",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 12.615019011406844,
+                  "mode-fraction": 0.029467680608365018,
+                  "top-3-fraction": 0.08840304182509506
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "database_type": "VARCHAR",
+            "semantic_type": "type/Category",
+            "table_id": 10,
+            "lib/deduplicated-name": "island",
+            "lib/original-name": "island",
+            "lib/breakout?": true,
+            "name": "island",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "island",
+            "lib/original-display-name": "Island",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              91,
+              null
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Text",
+            "active": true,
+            "id": 91,
+            "lib/desired-column-alias": "island",
+            "position": 5,
+            "visibility_type": "normal",
+            "display_name": "Island",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 7,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 7.730038022813688,
+                  "mode-fraction": 0.2946768060836502,
+                  "top-3-fraction": 0.6473384030418251
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "lib/deduplicated-name": "kasus",
+            "lib/original-name": "kasus",
+            "name": "kasus",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kasus",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "kasus",
+            "display_name": "Kasus",
+            "base_type": "type/BigInteger"
+          },
+          {
+            "lib/deduplicated-name": "kematian",
+            "lib/original-name": "kematian",
+            "name": "kematian",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kematian",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              1
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "kematian",
+            "display_name": "Kematian",
+            "base_type": "type/BigInteger"
+          },
+          {
+            "lib/deduplicated-name": "sembuh",
+            "lib/original-name": "sembuh",
+            "name": "sembuh",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "sembuh",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              2
+            ],
+            "effective_type": "type/BigInteger",
+            "lib/desired-column-alias": "sembuh",
+            "display_name": "Sembuh",
+            "base_type": "type/BigInteger"
+          },
+          {
+            "lib/deduplicated-name": "cfr",
+            "lib/original-name": "cfr",
+            "name": "cfr",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "cfr",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              3
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "cfr",
+            "display_name": "CFR (%)",
+            "base_type": "type/Float"
+          },
+          {
+            "lib/deduplicated-name": "kasus_per_100rb",
+            "lib/original-name": "kasus_per_100rb",
+            "name": "kasus_per_100rb",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kasus_per_100rb",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              4
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "kasus_per_100rb",
+            "display_name": "Kasus per 100 ribu penduduk",
+            "base_type": "type/Float"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Ringkasan per provinsi",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.706179Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.706179Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Text",
+                    "lib/uuid": "ccb51509-91a0-46c5-a730-633d3f6d8a88",
+                    "effective-type": "type/Text"
+                  },
+                  90
+                ],
+                [
+                  "field",
+                  {
+                    "base-type": "type/Text",
+                    "lib/uuid": "0eb2dea0-b3a0-4a8b-bb34-19debd3a5a41",
+                    "effective-type": "type/Text"
+                  },
+                  91
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 10,
+              "aggregation": [
+                [
+                  "sum",
+                  {
+                    "name": "kasus",
+                    "lib/uuid": "a6613def-ef1c-4b6d-8408-d8e557fe3d96",
+                    "display-name": "Kasus"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "07569e2b-892e-4432-a008-79696c53cbe4",
+                      "effective-type": "type/BigInteger"
+                    },
+                    94
+                  ]
+                ],
+                [
+                  "sum",
+                  {
+                    "name": "kematian",
+                    "lib/uuid": "43a40a3b-b9ca-4f6b-a4af-79e26c0e4912",
+                    "display-name": "Kematian"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "ff8156f7-b62b-4ee6-9bf2-0151bc24b8bd",
+                      "effective-type": "type/BigInteger"
+                    },
+                    95
+                  ]
+                ],
+                [
+                  "sum",
+                  {
+                    "name": "sembuh",
+                    "lib/uuid": "25079bc2-6ef5-4379-8670-2e2327766f7d",
+                    "display-name": "Sembuh"
+                  },
+                  [
+                    "field",
+                    {
+                      "base-type": "type/BigInteger",
+                      "lib/uuid": "b51d35ca-e17c-454a-8d83-0128b0fd614d",
+                      "effective-type": "type/BigInteger"
+                    },
+                    96
+                  ]
+                ],
+                [
+                  "*",
+                  {
+                    "name": "cfr",
+                    "lib/uuid": "0380bf12-18a6-4bfa-8ee2-3ae634c2f99e",
+                    "display-name": "CFR (%)"
+                  },
+                  [
+                    "/",
+                    {
+                      "lib/uuid": "04263fd5-6676-4517-a935-70d8c9b4798e"
+                    },
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "8f936147-6c46-4dd5-bc49-ef1ac41545de"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "f6b4aa76-46d0-46b2-b936-2763bf30ed91",
+                          "effective-type": "type/BigInteger"
+                        },
+                        95
+                      ]
+                    ],
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "729ae7be-ea47-476a-b5fc-c93241388564"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "2caa4d91-27af-4dfa-bbcf-734622ddeaef",
+                          "effective-type": "type/BigInteger"
+                        },
+                        94
+                      ]
+                    ]
+                  ],
+                  100
+                ],
+                [
+                  "/",
+                  {
+                    "name": "kasus_per_100rb",
+                    "lib/uuid": "08e493ac-2c04-495f-a1b1-4fe213e384cf",
+                    "display-name": "Kasus per 100 ribu penduduk"
+                  },
+                  [
+                    "*",
+                    {
+                      "lib/uuid": "8a60726d-82ff-48b6-a72a-5dc225bff3d8"
+                    },
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "4bb9a022-8ea7-43dd-b6d7-a4394ac75519"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "4ba579b3-6585-483c-810a-ba2fb94263de",
+                          "effective-type": "type/BigInteger"
+                        },
+                        94
+                      ]
+                    ],
+                    100000
+                  ],
+                  [
+                    "max",
+                    {
+                      "lib/uuid": "f5e15ddd-5956-4a10-88c3-76bd941e3791"
+                    },
+                    [
+                      "field",
+                      {
+                        "base-type": "type/BigInteger",
+                        "lib/uuid": "db668c5d-1ff6-49c8-a73d-1957ebb2991e",
+                        "effective-type": "type/BigInteger"
+                      },
+                      92
+                    ]
+                  ]
+                ]
+              ],
+              "order-by": [
+                [
+                  "desc",
+                  {
+                    "lib/uuid": "2e414b8b-3d22-4412-bbb6-e4b2937e82a8"
+                  },
+                  [
+                    "aggregation",
+                    {
+                      "lib/uuid": "d9c6167e-ee28-404d-a562-0d7610bfe730"
+                    },
+                    "a6613def-ef1c-4b6d-8408-d8e557fe3d96"
+                  ]
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 65,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "table",
+        "archived_directly": false,
+        "entity_id": "D4V6bXzQyf3pHsw1DS7p9",
+        "collection_preview": true,
+        "visualization_settings": {
+          "column_settings": {
+            "[\"name\",\"province_name\"]": {
+              "column_title": "Provinsi"
+            },
+            "[\"name\",\"island\"]": {
+              "column_title": "Pulau"
+            },
+            "[\"name\",\"cfr\"]": {
+              "suffix": "%",
+              "decimals": 2
+            },
+            "[\"name\",\"kasus_per_100rb\"]": {
+              "decimals": 0
+            }
+          }
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.706179Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 0,
+      "id": 60,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 65,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 65,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 65,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 65,
+      "entity_id": "KFItMAOvllGUHW034DQ2u",
+      "visualization_settings": {},
+      "size_y": 8,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 8
+    },
+    {
+      "size_x": 24,
+      "dashboard_tab_id": 9,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "table_id": 10,
+            "lib/deduplicated-name": "bps_province_code",
+            "lib/original-name": "bps_province_code",
+            "lib/breakout?": true,
+            "name": "bps_province_code",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "bps_province_code",
+            "lib/original-display-name": "Bps Province Code",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              89,
+              null
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Text",
+            "active": true,
+            "id": 89,
+            "lib/desired-column-alias": "bps_province_code",
+            "position": 3,
+            "visibility_type": "normal",
+            "display_name": "Bps Province Code",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 2.0,
+                  "mode-fraction": 0.029467680608365018,
+                  "top-3-fraction": 0.08840304182509506
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "lib/deduplicated-name": "cfr",
+            "lib/original-name": "cfr",
+            "name": "cfr",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "cfr",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "cfr",
+            "display_name": "CFR (%)",
+            "base_type": "type/Float"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Peta CFR per provinsi",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.615717Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.615717Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "aggregation": [
+                [
+                  "*",
+                  {
+                    "name": "cfr",
+                    "lib/uuid": "597fdafa-181b-48fc-846f-4eb461d474bb",
+                    "display-name": "CFR (%)"
+                  },
+                  [
+                    "/",
+                    {
+                      "lib/uuid": "5f0b205a-c4d3-4f06-b6f4-4f47d98e2b6c"
+                    },
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "6cc275e2-1604-4643-bd94-38cb927af20b"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "b24f1282-8adf-4b1f-82e6-f8c43b7441df",
+                          "effective-type": "type/BigInteger"
+                        },
+                        95
+                      ]
+                    ],
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "0dc6468b-8923-45fa-aff6-ff4f8e531fd2"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "95616e97-b5d1-4a80-8fbb-cc73e7b8538e",
+                          "effective-type": "type/BigInteger"
+                        },
+                        94
+                      ]
+                    ]
+                  ],
+                  100
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 10,
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Text",
+                    "lib/uuid": "85964c1c-3287-4e53-9fe1-4f052c89dca7",
+                    "effective-type": "type/Text"
+                  },
+                  89
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 63,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "map",
+        "archived_directly": false,
+        "entity_id": "IDfrXeFdftHNkqnE_RE8H",
+        "collection_preview": true,
+        "visualization_settings": {
+          "map.type": "region",
+          "map.region": "indonesia_provinsi",
+          "map.dimension": "bps_province_code",
+          "map.metric": "cfr",
+          "map.colors": [
+            "#FCE8E6",
+            "#F7C4BE",
+            "#EE9A90",
+            "#E06B5E",
+            "#C0392B",
+            "#7F1D14"
+          ],
+          "column_settings": {
+            "[\"name\",\"cfr\"]": {
+              "suffix": "%",
+              "decimals": 2
+            }
+          }
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.615717Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 0,
+      "id": 61,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 63,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 63,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 63,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 63,
+      "entity_id": "36ZLOuk5Z4FjLTaZQWxQo",
+      "visualization_settings": {},
+      "size_y": 9,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 0
+    },
+    {
+      "size_x": 24,
+      "dashboard_tab_id": 9,
+      "series": [],
+      "inline_parameters": [],
+      "action_id": null,
+      "collection_authority_level": null,
+      "card": {
+        "cache_invalidated_at": null,
+        "description": null,
+        "archived": false,
+        "view_count": 0,
+        "collection_position": null,
+        "source_card_id": null,
+        "table_id": 10,
+        "result_metadata": [
+          {
+            "database_type": "VARCHAR",
+            "table_id": 10,
+            "lib/deduplicated-name": "bps_province_code",
+            "lib/original-name": "bps_province_code",
+            "lib/breakout?": true,
+            "name": "bps_province_code",
+            "lib/source": "source/table-defaults",
+            "lib/source-column-alias": "bps_province_code",
+            "lib/original-display-name": "Bps Province Code",
+            "source": "breakout",
+            "field_ref": [
+              "field",
+              89,
+              null
+            ],
+            "lib/transformation-added-base-type": true,
+            "effective_type": "type/Text",
+            "active": true,
+            "id": 89,
+            "lib/desired-column-alias": "bps_province_code",
+            "position": 3,
+            "visibility_type": "normal",
+            "display_name": "Bps Province Code",
+            "fingerprint": {
+              "global": {
+                "distinct-count": 34,
+                "nil%": 0.0
+              },
+              "type": {
+                "type/Text": {
+                  "percent-json": 0.0,
+                  "percent-url": 0.0,
+                  "percent-email": 0.0,
+                  "percent-state": 0.0,
+                  "percent-blank": 0.0,
+                  "average-length": 2.0,
+                  "mode-fraction": 0.029467680608365018,
+                  "top-3-fraction": 0.08840304182509506
+                }
+              }
+            },
+            "base_type": "type/Text"
+          },
+          {
+            "lib/deduplicated-name": "kasus_per_100rb",
+            "lib/original-name": "kasus_per_100rb",
+            "name": "kasus_per_100rb",
+            "lib/source": "source/aggregations",
+            "lib/source-column-alias": "kasus_per_100rb",
+            "source": "aggregation",
+            "field_ref": [
+              "aggregation",
+              0
+            ],
+            "effective_type": "type/Float",
+            "lib/desired-column-alias": "kasus_per_100rb",
+            "display_name": "Kasus per 100 ribu penduduk",
+            "base_type": "type/Float"
+          }
+        ],
+        "embedding_type": null,
+        "initially_published_at": null,
+        "can_write": true,
+        "card_schema": 23,
+        "database_id": 2,
+        "enable_embedding": false,
+        "collection_id": 5,
+        "query_type": "query",
+        "download_perms": "full",
+        "name": "Peta kasus per 100 ribu penduduk per provinsi",
+        "public_uuid_prefix": null,
+        "document_id": null,
+        "last_used_at": "2026-10-11T12:33:32.660219Z",
+        "type": "question",
+        "dimensions": null,
+        "query_average_duration": null,
+        "creator_id": 1,
+        "moderation_reviews": [],
+        "updated_at": "2026-10-11T12:33:32.660219Z",
+        "made_public_by_id": null,
+        "embedding_params": null,
+        "cache_ttl": null,
+        "dataset_query": {
+          "stages": [
+            {
+              "aggregation": [
+                [
+                  "/",
+                  {
+                    "name": "kasus_per_100rb",
+                    "lib/uuid": "462a55f7-b7b7-4878-a210-c93af67bfc92",
+                    "display-name": "Kasus per 100 ribu penduduk"
+                  },
+                  [
+                    "*",
+                    {
+                      "lib/uuid": "84207117-7470-4f9b-a5b7-80504911575d"
+                    },
+                    [
+                      "sum",
+                      {
+                        "lib/uuid": "50582520-053d-4cfa-9b47-3be9f52f7d2a"
+                      },
+                      [
+                        "field",
+                        {
+                          "base-type": "type/BigInteger",
+                          "lib/uuid": "89eba8e8-e0a3-4ee9-af1e-39ddcbb10f42",
+                          "effective-type": "type/BigInteger"
+                        },
+                        94
+                      ]
+                    ],
+                    100000
+                  ],
+                  [
+                    "max",
+                    {
+                      "lib/uuid": "19797900-5975-4584-b397-7a07f352d126"
+                    },
+                    [
+                      "field",
+                      {
+                        "base-type": "type/BigInteger",
+                        "lib/uuid": "342d0094-5917-48bc-a53c-23cb7aecc688",
+                        "effective-type": "type/BigInteger"
+                      },
+                      92
+                    ]
+                  ]
+                ]
+              ],
+              "lib/type": "mbql.stage/mbql",
+              "source-table": 10,
+              "breakout": [
+                [
+                  "field",
+                  {
+                    "base-type": "type/Text",
+                    "lib/uuid": "3f338501-bd01-425b-b763-f3d43cab18ff",
+                    "effective-type": "type/Text"
+                  },
+                  89
+                ]
+              ]
+            }
+          ],
+          "lib/type": "mbql/query",
+          "database": 2
+        },
+        "dimension_mappings": null,
+        "id": 64,
+        "legacy_query": null,
+        "parameter_mappings": [],
+        "display": "map",
+        "archived_directly": false,
+        "entity_id": "Vkybd_ECJZGQSPalUeN0F",
+        "collection_preview": true,
+        "visualization_settings": {
+          "map.type": "region",
+          "map.region": "indonesia_provinsi",
+          "map.dimension": "bps_province_code",
+          "map.metric": "kasus_per_100rb",
+          "map.colors": [
+            "#E6EEF8",
+            "#BBD2EC",
+            "#8FB5DF",
+            "#5F94CE",
+            "#2E6FB7",
+            "#1B4A80"
+          ],
+          "column_settings": {
+            "[\"name\",\"kasus_per_100rb\"]": {
+              "decimals": 0
+            }
+          }
+        },
+        "metabase_version": "v0.63.19 (d7ac0ab)",
+        "parameters": [],
+        "dashboard_id": null,
+        "created_at": "2026-10-11T12:33:32.660219Z",
+        "public_uuid": null
+      },
+      "updated_at": "2026-10-11T12:33:32.776243Z",
+      "col": 0,
+      "id": 62,
+      "parameter_mappings": [
+        {
+          "parameter_id": "f_pulau",
+          "card_id": 64,
+          "target": [
+            "dimension",
+            [
+              "field",
+              91,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_provinsi",
+          "card_id": 64,
+          "target": [
+            "dimension",
+            [
+              "field",
+              90,
+              null
+            ]
+          ]
+        },
+        {
+          "parameter_id": "f_periode",
+          "card_id": 64,
+          "target": [
+            "dimension",
+            [
+              "field",
+              87,
+              null
+            ]
+          ]
+        }
+      ],
+      "card_id": 64,
+      "entity_id": "XAHuGg9lWy0YRrt0lglCN",
+      "visualization_settings": {},
+      "size_y": 9,
+      "dashboard_id": 3,
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "row": 9
+    }
+  ],
+  "embedding_type": null,
+  "initially_published_at": null,
+  "can_write": true,
+  "can_set_cache_policy": true,
+  "tabs": [
+    {
+      "id": 7,
+      "dashboard_id": 3,
+      "name": "Ringkasan Nasional",
+      "position": 0,
+      "entity_id": "P8HSqCCYg0bOfZ5Krfi9Z",
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "updated_at": "2026-10-11T12:33:32.776243Z"
+    },
+    {
+      "id": 8,
+      "dashboard_id": 3,
+      "name": "Perbandingan Provinsi",
+      "position": 1,
+      "entity_id": "xOxCzqybKw_tAnpVomq39",
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "updated_at": "2026-10-11T12:33:32.776243Z"
+    },
+    {
+      "id": 9,
+      "dashboard_id": 3,
+      "name": "Peta Sebaran",
+      "position": 2,
+      "entity_id": "rIVn_6L9uiAKxfsWHwdK0",
+      "created_at": "2026-10-11T12:33:32.776243Z",
+      "updated_at": "2026-10-11T12:33:32.776243Z"
+    }
+  ],
+  "enable_embedding": false,
+  "collection_id": 5,
+  "show_in_getting_started": false,
+  "name": "COVID-19 Indonesia",
+  "is_remote_synced": false,
+  "width": "fixed",
+  "public_uuid_prefix": null,
+  "caveats": null,
+  "collection_authority_level": null,
+  "creator_id": 1,
+  "can_restore": false,
+  "moderation_reviews": [],
+  "updated_at": "2026-10-11T12:33:32.776243Z",
+  "made_public_by_id": null,
+  "embedding_params": null,
+  "cache_ttl": null,
+  "last_used_param_values": {},
+  "id": 3,
+  "last_viewed_at": "2026-10-11T12:33:32.729946Z",
+  "position": null,
+  "archived_directly": false,
+  "entity_id": "C9hk2yBbx20BZMxW_hw4x",
+  "param_fields": {
+    "f_pulau": [
+      {
+        "semantic_type": "type/Category",
+        "table_id": 10,
+        "name": "island",
+        "has_field_values": "list",
+        "fk_target_field_id": null,
+        "dimensions": [],
+        "id": 91,
+        "target": null,
+        "display_name": "Island",
+        "name_field": null,
+        "base_type": "type/Text"
+      },
+      {
+        "semantic_type": "type/Category",
+        "table_id": 9,
+        "name": "island",
+        "has_field_values": "list",
+        "fk_target_field_id": null,
+        "dimensions": [],
+        "id": 76,
+        "target": null,
+        "display_name": "Island",
+        "name_field": null,
+        "base_type": "type/Text"
+      }
+    ],
+    "f_provinsi": [
+      {
+        "semantic_type": null,
+        "table_id": 9,
+        "name": "province_name",
+        "has_field_values": "list",
+        "fk_target_field_id": null,
+        "dimensions": [],
+        "id": 75,
+        "target": null,
+        "display_name": "Province Name",
+        "name_field": null,
+        "base_type": "type/Text"
+      },
+      {
+        "semantic_type": null,
+        "table_id": 10,
+        "name": "province_name",
+        "has_field_values": "list",
+        "fk_target_field_id": null,
+        "dimensions": [],
+        "id": 90,
+        "target": null,
+        "display_name": "Province Name",
+        "name_field": null,
+        "base_type": "type/Text"
+      }
+    ],
+    "f_periode": [
+      {
+        "semantic_type": null,
+        "table_id": 9,
+        "name": "report_date",
+        "has_field_values": "none",
+        "fk_target_field_id": null,
+        "dimensions": [],
+        "id": 72,
+        "target": null,
+        "display_name": "Report Date",
+        "name_field": null,
+        "base_type": "type/Date"
+      },
+      {
+        "semantic_type": null,
+        "table_id": 10,
+        "name": "report_month",
+        "has_field_values": "none",
+        "fk_target_field_id": null,
+        "dimensions": [],
+        "id": 87,
+        "target": null,
+        "display_name": "Report Month",
+        "name_field": null,
+        "base_type": "type/Date"
+      }
+    ]
+  },
+  "last-edit-info": {
+    "id": 1,
+    "email": "admin@tugas.local",
+    "first_name": "Wahyu",
+    "last_name": "Primayasa",
+    "timestamp": "2026-10-11T12:33:32.860239Z"
+  },
+  "collection": {
+    "authority_level": null,
+    "description": null,
+    "archived": false,
+    "slug": "tugas_dbt_dan_bi_574012",
+    "archive_operation_id": null,
+    "name": "Tugas dbt dan BI 574012",
+    "is_remote_synced": false,
+    "personal_owner_id": null,
+    "type": null,
+    "is_sample": false,
+    "effective_location": "/",
+    "id": 5,
+    "archived_directly": null,
+    "entity_id": "DhYyAcW4aJsJaBpslRwWh",
+    "location": "/",
+    "namespace": null,
+    "is_personal": false,
+    "created_at": "2026-10-11T12:25:13.007671Z"
+  },
+  "parameters": [
+    {
+      "id": "f_pulau",
+      "name": "Pulau",
+      "slug": "pulau",
+      "type": "string/=",
+      "sectionId": "string"
+    },
+    {
+      "id": "f_provinsi",
+      "name": "Provinsi",
+      "slug": "provinsi",
+      "type": "string/=",
+      "sectionId": "string"
+    },
+    {
+      "id": "f_periode",
+      "name": "Periode",
+      "slug": "periode",
+      "type": "date/all-options",
+      "sectionId": "date"
+    }
+  ],
+  "auto_apply_filters": true,
+  "created_at": "2026-10-11T12:33:32.729946Z",
+  "public_uuid": null,
+  "points_of_interest": null,
+  "can_delete": false
+}

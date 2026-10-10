@@ -1,0 +1,92 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Output pipeline Airflow etl_sederhana_574012 yang dimuat apa adanya (semua kolom teks) oleh scripts/load_raw.py"
+    schema: raw
+    tables:
+      - name: covid_daily
+        description: "Data harian COVID-19 per provinsi hasil task extract_data dan validate_data (covid_extracted.csv)"
+        columns:
+          - name: Date
+            description: "Tanggal laporan, teks berformat M/D/YYYY"
+          - name: Location ISO Code
+            description: "Kode ISO 3166-2 provinsi"
+      - name: covid_monthly_summary
+        description: "Ringkasan bulanan per provinsi hasil task load_data (covid_provinsi_monthly_summary.csv)"
+        columns:
+          - name: YearMonth
+            description: "Bulan laporan, teks berformat YYYY-MM"
+
+models:
+  - name: stg_covid_daily
+    description: "Data harian COVID-19 per provinsi yang sudah dirapikan: nama kolom snake_case, tanggal bertipe date, angka bertipe numerik, persentase tanpa simbol %, dan kasus aktif negatif dijadikan NULL. Satu baris per provinsi per tanggal."
+    columns:
+      - name: report_date
+        description: "Tanggal laporan"
+        data_tests:
+          - not_null
+      - name: province_code
+        description: "Kode ISO 3166-2 provinsi, misalnya ID-JK"
+        data_tests:
+          - not_null
+      - name: province_name
+        description: "Nama provinsi"
+        data_tests:
+          - not_null
+      - name: bps_province_code
+        description: "Kode provinsi BPS (dua digit) dari seed province_bps_codes"
+        data_tests:
+          - not_null
+      - name: island
+        description: "Kelompok pulau provinsi"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Sumatera', 'Jawa', 'Kalimantan', 'Sulawesi', 'Nusa Tenggara', 'Maluku', 'Papua']
+      - name: population
+        description: "Jumlah penduduk provinsi"
+      - name: new_cases
+        description: "Kasus terkonfirmasi baru pada tanggal tersebut"
+        data_tests:
+          - not_null
+      - name: new_deaths
+        description: "Kematian baru pada tanggal tersebut"
+      - name: new_recovered
+        description: "Pasien sembuh baru pada tanggal tersebut"
+      - name: total_cases
+        description: "Kasus kumulatif menurut sumber"
+      - name: total_deaths
+        description: "Kematian kumulatif menurut sumber"
+      - name: total_recovered
+        description: "Sembuh kumulatif menurut sumber"
+      - name: total_active_cases
+        description: "Kasus aktif kumulatif; NULL bila nilai sumber negatif"
+      - name: is_cumulative_consistent
+        description: "False bila kasus aktif kumulatif dari sumber bernilai negatif"
+      - name: source_case_fatality_rate_pct
+        description: "CFR kumulatif dari sumber dalam persen, sudah bertipe numerik"
+      - name: source_case_recovered_rate_pct
+        description: "Recovery rate kumulatif dari sumber dalam persen, sudah bertipe numerik"
+
+  - name: stg_airflow_monthly_summary
+    description: "Ringkasan bulanan per provinsi dari output akhir pipeline Airflow, dengan nama kolom snake_case dan bulan bertipe date. Satu baris per provinsi per bulan."
+    columns:
+      - name: province_name
+        description: "Nama provinsi"
+        data_tests:
+          - not_null
+      - name: report_month
+        description: "Tanggal awal bulan laporan"
+        data_tests:
+          - not_null
+      - name: new_cases
+        description: "Total kasus baru sebulan menurut Airflow"
+      - name: new_deaths
+        description: "Total kematian baru sebulan menurut Airflow"
+      - name: new_recovered
+        description: "Total sembuh baru sebulan menurut Airflow"
+      - name: case_fatality_rate_pct
+        description: "CFR bulanan menurut Airflow, dalam persen"
+      - name: recovery_rate_pct
+        description: "Recovery rate bulanan menurut Airflow, dalam persen"

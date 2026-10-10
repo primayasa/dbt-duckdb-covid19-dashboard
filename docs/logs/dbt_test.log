@@ -1,0 +1,61 @@
+$ dbt test
+09:52:02  Running with dbt=1.12.5
+09:52:02  Registered adapter: duckdb=1.11.0
+09:52:04  Found 4 models, 24 data tests, 1 seed, 2 sources, 500 macros
+09:52:04  
+09:52:04  Concurrency: 1 threads (target='dev')
+09:52:04  
+09:52:04  1 of 24 START test accepted_values_stg_covid_daily_island__Sumatera__Jawa__Kalimantan__Sulawesi__Nusa_Tenggara__Maluku__Papua  [RUN]
+09:52:04  1 of 24 PASS accepted_values_stg_covid_daily_island__Sumatera__Jawa__Kalimantan__Sulawesi__Nusa_Tenggara__Maluku__Papua  [PASS in 0.04s]
+09:52:04  2 of 24 START test assert_monthly_reconciled_with_airflow ...................... [RUN]
+09:52:04  2 of 24 PASS assert_monthly_reconciled_with_airflow ............................ [PASS in 0.01s]
+09:52:04  3 of 24 START test assert_no_negative_active_cases ............................. [RUN]
+09:52:04  3 of 24 PASS assert_no_negative_active_cases ................................... [PASS in 0.01s]
+09:52:04  4 of 24 START test not_null_mart_covid_daily_province_province_code ............ [RUN]
+09:52:04  4 of 24 PASS not_null_mart_covid_daily_province_province_code .................. [PASS in 0.02s]
+09:52:04  5 of 24 START test not_null_mart_covid_daily_province_report_date .............. [RUN]
+09:52:04  5 of 24 PASS not_null_mart_covid_daily_province_report_date .................... [PASS in 0.02s]
+09:52:04  6 of 24 START test not_null_mart_covid_monthly_province_bps_province_code ...... [RUN]
+09:52:04  6 of 24 PASS not_null_mart_covid_monthly_province_bps_province_code ............ [PASS in 0.02s]
+09:52:04  7 of 24 START test not_null_mart_covid_monthly_province_new_cases .............. [RUN]
+09:52:04  7 of 24 PASS not_null_mart_covid_monthly_province_new_cases .................... [PASS in 0.02s]
+09:52:04  8 of 24 START test not_null_mart_covid_monthly_province_province_code .......... [RUN]
+09:52:04  8 of 24 PASS not_null_mart_covid_monthly_province_province_code ................ [PASS in 0.02s]
+09:52:04  9 of 24 START test not_null_mart_covid_monthly_province_province_month_key ..... [RUN]
+09:52:04  9 of 24 PASS not_null_mart_covid_monthly_province_province_month_key ........... [PASS in 0.02s]
+09:52:04  10 of 24 START test not_null_mart_covid_monthly_province_province_name ......... [RUN]
+09:52:04  10 of 24 PASS not_null_mart_covid_monthly_province_province_name ............... [PASS in 0.02s]
+09:52:04  11 of 24 START test not_null_mart_covid_monthly_province_report_month .......... [RUN]
+09:52:04  11 of 24 PASS not_null_mart_covid_monthly_province_report_month ................ [PASS in 0.02s]
+09:52:04  12 of 24 START test not_null_province_bps_codes_bps_province_code .............. [RUN]
+09:52:04  12 of 24 PASS not_null_province_bps_codes_bps_province_code .................... [PASS in 0.02s]
+09:52:04  13 of 24 START test not_null_province_bps_codes_province_code .................. [RUN]
+09:52:04  13 of 24 PASS not_null_province_bps_codes_province_code ........................ [PASS in 0.02s]
+09:52:04  14 of 24 START test not_null_stg_airflow_monthly_summary_province_name ......... [RUN]
+09:52:04  14 of 24 PASS not_null_stg_airflow_monthly_summary_province_name ............... [PASS in 0.02s]
+09:52:04  15 of 24 START test not_null_stg_airflow_monthly_summary_report_month .......... [RUN]
+09:52:04  15 of 24 PASS not_null_stg_airflow_monthly_summary_report_month ................ [PASS in 0.02s]
+09:52:04  16 of 24 START test not_null_stg_covid_daily_bps_province_code ................. [RUN]
+09:52:04  16 of 24 PASS not_null_stg_covid_daily_bps_province_code ....................... [PASS in 0.02s]
+09:52:04  17 of 24 START test not_null_stg_covid_daily_new_cases ......................... [RUN]
+09:52:04  17 of 24 PASS not_null_stg_covid_daily_new_cases ............................... [PASS in 0.02s]
+09:52:04  18 of 24 START test not_null_stg_covid_daily_province_code ..................... [RUN]
+09:52:04  18 of 24 PASS not_null_stg_covid_daily_province_code ........................... [PASS in 0.02s]
+09:52:04  19 of 24 START test not_null_stg_covid_daily_province_name ..................... [RUN]
+09:52:04  19 of 24 PASS not_null_stg_covid_daily_province_name ........................... [PASS in 0.02s]
+09:52:04  20 of 24 START test not_null_stg_covid_daily_report_date ....................... [RUN]
+09:52:04  20 of 24 PASS not_null_stg_covid_daily_report_date ............................. [PASS in 0.02s]
+09:52:04  21 of 24 START test relationships_mart_covid_daily_province_province_code__province_code__ref_mart_covid_monthly_province_  [RUN]
+09:52:04  21 of 24 PASS relationships_mart_covid_daily_province_province_code__province_code__ref_mart_covid_monthly_province_  [PASS in 0.02s]
+09:52:04  22 of 24 START test unique_mart_covid_monthly_province_province_month_key ...... [RUN]
+09:52:04  22 of 24 PASS unique_mart_covid_monthly_province_province_month_key ............ [PASS in 0.02s]
+09:52:04  23 of 24 START test unique_province_bps_codes_bps_province_code ................ [RUN]
+09:52:04  23 of 24 PASS unique_province_bps_codes_bps_province_code ...................... [PASS in 0.02s]
+09:52:04  24 of 24 START test unique_province_bps_codes_province_code .................... [RUN]
+09:52:04  24 of 24 PASS unique_province_bps_codes_province_code .......................... [PASS in 0.01s]
+09:52:04  
+09:52:04  Finished running 24 data tests in 0 hours 0 minutes and 0.53 seconds (0.53s).
+09:52:04  
+09:52:04  Completed successfully
+09:52:04  
+09:52:04  Done. PASS=24 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=24

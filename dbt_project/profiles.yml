@@ -1,0 +1,8 @@
+dbt_tugas:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # relatif terhadap folder dbt_project/ (tempat dbt dijalankan)
+      path: "{{ env_var('DUCKDB_PATH', '../data/warehouse.duckdb') }}"
+      threads: 1

@@ -1,0 +1,20 @@
+version: 2
+
+seeds:
+  - name: province_bps_codes
+    description: "Pemetaan kode ISO 3166-2 provinsi ke kode provinsi BPS (dua digit). Kode BPS dipakai sebagai kunci wilayah pada peta provinsi di dashboard."
+    config:
+      column_types:
+        province_code: varchar
+        bps_province_code: varchar
+    columns:
+      - name: province_code
+        description: "Kode ISO 3166-2 provinsi, misalnya ID-JK"
+        data_tests:
+          - unique
+          - not_null
+      - name: bps_province_code
+        description: "Kode provinsi BPS, misalnya 31 untuk DKI Jakarta"
+        data_tests:
+          - unique
+          - not_null

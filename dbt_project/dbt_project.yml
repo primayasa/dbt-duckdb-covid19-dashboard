@@ -1,0 +1,22 @@
+name: dbt_tugas
+version: "1.0.0"
+config-version: 2
+
+profile: dbt_tugas
+
+model-paths: ["models"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  dbt_tugas:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+# Cache parsing menyimpan path absolut, sehingga bentrok bila dbt dijalankan
+# bergantian dari Docker (/workspace) dan dari host.
+flags:
+  partial_parse: false

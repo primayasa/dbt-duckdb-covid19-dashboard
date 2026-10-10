@@ -1,0 +1,307 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper, margin=2.2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyvrb}
+\usepackage{fvextra}
+\fvset{breaklines=true, breakanywhere=true}
+\usepackage{titling}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{setspace}
+
+\titlespacing*{\section}{0pt}{1.0ex plus .3ex minus .2ex}{0.5ex plus .1ex}
+\titlespacing*{\subsection}{0pt}{0.6ex plus .2ex minus .1ex}{0.3ex}
+\setlength{\parskip}{0.2em}
+
+\definecolor{codebg}{RGB}{245,245,245}
+\definecolor{ugmblue}{RGB}{31,56,100}
+\definecolor{headingpurple}{RGB}{89,60,143}
+
+\titleformat{\section}{\normalfont\Large\bfseries\color{headingpurple}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{headingpurple}}{\thesubsection}{1em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{{\color{headingpurple}\hrule height\headrulewidth\vspace{-\headrulewidth}}}
+\fancyhead[L]{\small\textbf{\color{headingpurple}Data Warehouse \& Business Intelligence}}
+\fancyhead[R]{\small\color{headingpurple}DCSE, Universitas Gadjah Mada}
+\fancyfoot[C]{\thepage}
+\newcommand{\sectionrule}{\vspace{-0.3em}\noindent{\color{headingpurple}\rule{\linewidth}{0.6pt}}\vspace{0.4em}}
+\usepackage[export]{adjustbox}
+\usepackage{caption}
+\captionsetup{font=small, skip=4pt}
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\figurename}{Gambar}
+\setlength{\textfloatsep}{8pt}
+\setlength{\intextsep}{6pt}
+
+% Menampilkan screenshot bila filenya ada; jika belum, tampilkan penanda.
+\newcommand{\shot}[2][]{\IfFileExists{#2}{\includegraphics[#1]{#2}}{\fbox{\parbox{0.8\linewidth}{\centering\small Screenshot belum tersedia: \texttt{\detokenize{#2}}}}}}
+
+\title{\vspace{-1.5em}\textbf{\Large Laporan Tugas: Transformasi Data dengan dbt\\ dan Dashboard BI}\\[0.3em]
+\normalsize Studi Kasus: Data COVID-19 Indonesia (lanjutan Tugas Airflow)}
+\author{}
+\date{}
+
+\emergencystretch=3em
+\begin{document}
+\maketitle
+\vspace{-6.5em}
+
+\noindent
+\begin{tabular}{ll}
+\textbf{Nama} & Wahyu Primayasa \\
+\textbf{NIM} & 25/574012/PPA/07232 \\
+\textbf{Mata Kuliah} & Data Warehouse dan Business Intelligence \\
+\textbf{Stack} & dbt-core 1.12, dbt-duckdb, DuckDB, Metabase, Docker Compose \\
+\end{tabular}
+\vspace{0.6em}
+
+\sectionrule
+
+\section*{A. Deskripsi Proyek}
+
+Proyek ini memakai \textbf{Opsi A}: sumber datanya adalah output pipeline
+Airflow \texttt{etl\_sederhana\_574012} dari tugas sebelumnya, yang mengolah
+dataset \textit{COVID-19 Indonesia} (Kaggle, Hendratno). Dua file hasil
+pipeline dimuat apa adanya (semua kolom bertipe teks) ke schema \texttt{raw}
+pada \texttt{data/warehouse.duckdb} oleh \texttt{scripts/load\_raw.py}:
+
+\begin{center}
+\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Tabel raw dan task Airflow asalnya.}
+\begin{tabular}{@{}l l r p{5.0cm}@{}}
+\toprule
+\textbf{Tabel raw} & \textbf{Task Airflow asal} & \textbf{Baris} & \textbf{Isi} \\
+\midrule
+\texttt{raw.covid\_daily} & \texttt{extract} $\rightarrow$ \texttt{validate} & 30.893 & Data harian 34 provinsi, 1 Maret 2020 sampai 15 September 2022 \\
+\texttt{raw.covid\_monthly\_summary} & \texttt{load\_data} & 1.052 & Ringkasan bulanan per provinsi \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+Pada tugas Airflow, transformasi ditulis dengan Pandas di dalam task. Di sini
+logika yang sama dipindahkan ke model SQL dbt 
+dan hasil akhirnya dibandingkan kembali dengan output Airflow. Dashboard
+dirancang untuk menjawab tiga pertanyaan bisnis:
+
+\begin{enumerate}[nosep, label=\textbf{Q\arabic*.}]
+    \item Bagaimana perkembangan kasus dan kematian COVID-19 dari waktu ke waktu, dan kapan puncaknya?
+    \item Provinsi dan pulau mana yang memiliki jumlah kasus terbesar?
+    \item Provinsi mana yang tingkat kematiannya (CFR) paling tinggi, dan provinsi mana yang penularannya paling luas dibanding jumlah penduduknya (kasus per 100 ribu penduduk)?
+\end{enumerate}
+
+\section*{B. Arsitektur dan Model dbt}
+
+Project dbt ini memakai adapter \texttt{dbt-duckdb} dengan struktur
+\textit{staging} $\rightarrow$ \textit{mart}.
+Pada project ini dibuat dua staging model yang digabung (\textit{join}) pada mart bulanan karena ada dua tabel sumber.
+Terdapat \textit{seed} (\texttt{province\_bps\_codes}) untuk memetakan kode ISO provinsi
+ke kode BPS, yang dipakai sebagai kunci wilayah pada peta di dashboard.
+
+\begin{center}
+\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Staging model.}
+\begin{tabular}{@{}p{4.7cm} l p{8.0cm}@{}}
+\toprule
+\textbf{Model} & \textbf{Materialization} & \textbf{Isi dan alasan materialization} \\
+\midrule
+\texttt{stg\_covid\_daily} & view & Merapikan nama kolom, tipe data, dan format tanggal. View dipilih karena hanya lapisan pembersih yang ringan dan harus selalu mengikuti isi raw. \\
+\texttt{stg\_airflow\_monthly\_summary} & view & Ringkasan bulanan versi Airflow dengan kolom rapi dan bulan bertipe \texttt{date}. Alasan sama dengan di atas. \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Mart model.}
+\begin{tabular}{@{}p{4.7cm} l p{8.0cm}@{}}
+\toprule
+\textbf{Model} & \textbf{Materialization} & \textbf{Isi dan alasan materialization} \\
+\midrule
+\texttt{mart\_covid\_monthly\_province} & table & Agregasi bulanan per provinsi dari \texttt{ref('stg\_covid\_daily')} beserta CFR, recovery rate, dan kasus per 100 ribu penduduk, di-join dengan staging Airflow. Table dipilih karena dibaca berulang oleh dashboard, sehingga agregasi tidak dihitung ulang tiap query. \\
+\texttt{mart\_covid\_daily\_province} & incremental & Fakta harian per provinsi untuk tren. Data harian hanya bertambah di ujung waktu, jadi run berikutnya cukup memproses tanggal yang lebih baru dari isi tabel (\texttt{delete+insert} dengan kunci provinsi dan tanggal). \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\begin{figure}[h]
+\centering
+\shot[width=0.9\linewidth]{images/dbt_docs_lineage_crop.png}
+\caption{Lineage graph dari \texttt{dbt docs}: dua source raw, satu seed, dua staging, dua mart, dan dua singular test.}
+\end{figure}
+
+\section*{C. Tests dan Data Quality}
+
+Pada project ini terdapat 24 data test. Pertama, \textbf{generic test}, yaitu
+test bawaan dbt yang berfungsi memeriksa aturan umum pada sebuah kolom dan
+bisa dipasang berulang di banyak kolom. Adapun test yang terdefinisi pada
+\texttt{schema.yml} yaitu:
+
+\begin{itemize}[nosep]
+    \item \texttt{not\_null} pada kolom kunci (tanggal, kode dan nama provinsi, jumlah kasus), karena baris tanpa data kunci akan hilang atau salah kelompok saat agregasi.
+    \item \texttt{unique} pada \texttt{province\_month\_key}, untuk menjamin satu baris per provinsi per bulan.
+    \item \texttt{accepted\_values} pada \texttt{island}, untuk menangkap salah ketik nama pulau yang dipakai sebagai filter dashboard.
+    \item \texttt{relationships} dari mart harian ke mart bulanan, untuk memastikan kedua mart memuat himpunan provinsi yang sama.
+    \item \texttt{unique} dan \texttt{not\_null} pada kode BPS, karena provinsi tanpa kode akan hilang dari peta.
+\end{itemize}
+
+Kedua, \textbf{singular test}, yaitu query SQL yang ditulis khusus untuk satu
+aturan dan dianggap gagal bila mengembalikan baris. Adapun test yang
+terdefinisi pada folder \texttt{tests/} yaitu:
+
+\begin{itemize}[nosep]
+    \item \texttt{assert\_no\_negative\_active\_cases}: gagal bila masih ada kasus aktif negatif setelah staging.
+    \item \texttt{assert\_monthly\_reconciled\_with\_airflow}: gagal bila ada provinsi-bulan yang angka kasus, kematian, atau sembuhnya berbeda dari output Airflow. Seluruh 1.052 baris cocok.
+\end{itemize}
+
+Masalah kualitas data yang ditemukan pada \texttt{raw.covid\_daily} dan dampaknya:
+
+\begin{center}
+\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Masalah kualitas data dan penanganannya.}
+\begin{tabular}{@{}p{6.4cm} r r p{5.0cm}@{}}
+\toprule
+\textbf{Masalah} & \textbf{Raw} & \textbf{Staging} & \textbf{Penanganan di staging} \\
+\midrule
+Kasus aktif kumulatif negatif, yaitu kematian ditambah sembuh melebihi total kasus (19 provinsi; 43 baris di antaranya kematian melebihi kasus) & 479 & 0 & Dijadikan \texttt{NULL} dan ditandai \texttt{is\_cumulative\_consistent = false} \\
+Persentase CFR dan recovery rate berupa teks bersimbol \% sehingga tidak bisa dihitung & 30.893 & 0 & Simbol dibuang, di-cast ke \texttt{double} \\
+Tanggal berupa teks \texttt{M/D/YYYY} sehingga urutan dan agregasi waktunya salah & 30.893 & 0 & Di-parse menjadi \texttt{date} \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+Baris bermasalah tidak dihapus, karena angka harian pada baris tersebut
+(\texttt{new\_cases}, \texttt{new\_deaths}, \texttt{new\_recovered}) tetap
+valid dan dibutuhkan agar total bulanan cocok dengan Airflow. Yang
+dinetralkan hanya nilai kumulatif yang mustahil.
+
+Pola temuannya menunjukkan bahwa masalah ada pada kolom kumulatif di sumber
+data. Dari 479 baris, 371 terjadi pada 2020, sebagian besar pada bulan pertama
+pelaporan tiap provinsi, ketika total kematian dan sembuh sudah besar padahal
+total kasus masih kecil. Contohnya DKI Jakarta pada 1 Maret 2020: 39 kasus,
+20 meninggal, dan 75 sembuh. Kemungkinan ketiga kolom kumulatif itu disusun
+dari titik awal yang berbeda. Karena itu dashboard tidak memakai kolom
+kumulatif sumber. Semua angkanya dihitung dari nol dengan menjumlahkan angka
+harian, dan selisihnya terhadap total kasus kumulatif sumber hanya 48 kasus
+dari 6,4 juta.
+
+\begin{figure}[h]
+\centering
+\begin{minipage}[t]{0.49\linewidth}
+\centering
+\shot[width=\linewidth]{images/dbt_run_crop.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\linewidth}
+\centering
+\shot[width=\linewidth]{images/dbt_test_crop.png}
+\end{minipage}
+\caption{Bukti eksekusi dbt di terminal. Kiri: \texttt{dbt seed} memuat tabel rujukan kode provinsi, lalu \texttt{dbt run} membangun empat model; baris akhir \texttt{PASS=4 ERROR=0} berarti keempatnya berhasil dibuat. Kanan: \texttt{dbt test} menjalankan 24 pengujian kualitas data; \texttt{PASS=24 ERROR=0} berarti semuanya lulus (bagian tengah log dipotong). Log lengkap ada di \texttt{docs/logs/}.}
+\end{figure}
+
+\section*{D. Dashboard}
+
+Dashboard \textbf{COVID-19 Indonesia} dibangun di Metabase
+(Docker) yang terhubung langsung ke \texttt{warehouse.duckdb} secara
+read-only. Dashboard terdiri dari tiga tab dengan tiga filter interaktif
+(\textbf{Pulau}, \textbf{Provinsi}, \textbf{Periode}) yang berlaku pada semua kartu.
+Seluruh card dapat dibuat lewat API oleh
+\texttt{dashboard/setup\_metabase.py}, sehingga dashboard dapat dibangun ulang
+dari nol. 
+
+\begin{figure}[h]
+\centering
+\begin{minipage}[t]{0.44\linewidth}
+\centering
+\shot[width=\linewidth, trim={300 80 300 0}, clip]{images/dashboard_nasional.png}
+\caption{Tab 1, \textit{Ringkasan Nasional}.}\label{fig:tab1}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.44\linewidth}
+\centering
+\shot[width=\linewidth, trim={300 80 300 0}, clip]{images/dashboard_provinsi.png}
+\caption{Tab 2, \textit{Perbandingan Provinsi}.}\label{fig:tab2}
+\end{minipage}
+\end{figure}
+
+\begin{center}
+\begin{minipage}{\linewidth}\centering\small
+\captionof{table}{Elemen dashboard pada tab 1 dan tab 2 beserta alasan pemilihannya.}
+\begin{tabular}{@{}p{4.3cm} l p{8.6cm}@{}}
+\toprule
+\textbf{Elemen} & \textbf{Jenis} & \textbf{Alasan pemilihan} \\
+\midrule
+\multicolumn{3}{@{}l}{\textbf{Tab 1: Ringkasan Nasional (Gambar \ref{fig:tab1})}} \\
+Total kasus, kematian, sembuh, CFR & KPI card & Angka tunggal yang paling sering ditanyakan, diletakkan paling atas sebagai titik masuk. \\
+\cmidrule(l){1-3}
+Kasus dan kematian baru per minggu & Line chart & Menjawab Q1. Bentuk garis cocok untuk tren deret waktu. \\
+\cmidrule(l){1-3}
+10 provinsi kasus terbanyak & Bar horizontal & Menjawab Q2. Perbandingan antar kategori yang diurutkan. Bar horizontal dipilih agar nama provinsi terbaca. \\
+\cmidrule(l){1-3}
+Kasus menurut pulau & Bar chart & Menjawab Q2 pada tingkat pulau. Bar Chart dipilih karena tujuh kategori ( pulau ) sulit dibandingkan lewat sudut pada pie chart. \\
+\midrule
+\multicolumn{3}{@{}l}{\textbf{Tab 2: Perbandingan Provinsi (Gambar \ref{fig:tab2})}} \\
+10 provinsi CFR tertinggi dan kasus per 100 ribu penduduk tertinggi & Bar horizontal & Menjawab Q3. CFR dan kasus per 100 ribu penduduk berupa rasio, sehingga provinsi berpenduduk kecil dan besar bisa dibandingkan secara setara. \\
+\cmidrule(l){1-3}
+Ringkasan per provinsi & Tabel & Nilai persis seluruh provinsi sebagai rujukan yang lebih detail. \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+Tab 3, \textit{Peta Sebaran} (Gambar \ref{fig:tab3}), menampilkan dua peta
+choropleth provinsi: CFR, dan kasus per 100 ribu penduduk. Kedua ukuran ini
+sama dengan dua bar chart di tab 2 dan menjawab Q3. Bar chart hanya memuat
+10 provinsi teratas, sedangkan peta menampilkan seluruh 34 provinsi sekaligus,
+sehingga pola antarwilayah yang bertetangga ikut terlihat. Warnanya mengikuti
+tab 2: merah untuk CFR, biru untuk kasus. Makin tua warnanya, makin tinggi nilainya.
+
+\begin{center}
+\begin{minipage}{\linewidth}\centering
+\shot[width=0.40\linewidth, trim={300 300 300 0}, clip]{images/dashboard_peta.png}
+\captionof{figure}{Tab 3, \textit{Peta Sebaran}.}\label{fig:tab3}
+\end{minipage}
+\end{center}
+
+\section*{E. Kendala dan Solusi}
+
+\begin{itemize}[nosep]
+    \item \textbf{Metabase tidak menyertakan driver DuckDB.} Driver komunitas dari MotherDuck harus dipasang sendiri, dan library DuckDB membutuhkan glibc sehingga tidak dipakai image resmi yang berbasis Alpine. Solusinya membuat image sendiri di atas \texttt{eclipse-temurin:21-jre} yang menjalankan \texttt{metabase.jar} bersama driver tersebut. Unduhan 660 MB sempat gagal karena timeout, sehingga perintah unduh diberi opsi \textit{retry} dan \textit{resume}.
+    \item \textbf{DuckDB hanya mengizinkan satu proses penulis.} Saat container dbt dijalankan ulang ketika Metabase masih menyala, dbt gagal dengan \textit{Could not set lock on file}. Solusinya, Metabase dikoneksikan read-only, Docker Compose mengatur agar Metabase baru menyala setelah dbt selesai, dan Metabase dihentikan dulu sebelum dbt dijalankan ulang.
+    \item \textbf{Chart top-10 menampilkan batang ``Other''.} Metabase menggabungkan batang terbawah bila kartu terlalu pendek, sehingga peringkat ke-9 dan ke-10 hilang dan nilai CFR gabungannya menyesatkan. Solusinya menambah tinggi kartu sampai sepuluh batang dapat ditampilkan.
+    \item \textbf{Peta provinsi butuh GeoJSON dari URL publik.} Metabase menolak GeoJSON dari alamat internal container, dan nama provinsi pada file peta tidak seragam dengan data. Solusinya memakai GeoJSON publik dan mencocokkannya lewat kode provinsi BPS yang ditambahkan melalui dbt seed.
+    \item \textbf{Angka kumulatif sumber tidak konsisten.} Menghitung ulang kumulatif dari angka harian tidak menyelesaikan masalah (masih 137 baris negatif), karena beberapa provinsi melaporkan kesembuhan lebih dulu daripada kasusnya. Karena itu nilai mustahil ditandai dan dijadikan \texttt{NULL}, dan mart dibangun hanya dari angka harian.
+\end{itemize}
+
+\section*{F. Kesimpulan}
+
+Dari Maret 2020 sampai September 2022 tercatat 6.397.309 kasus dan 157.819
+kematian (CFR 2,47\%). Kasus memuncak dua kali: gelombang Delta pada
+Juli 2021 (1,23 juta kasus sebulan) dan gelombang Omicron pada Februari 2022
+(1,21 juta kasus). Jumlah kasusnya hampir sama, tetapi kematiannya jauh
+berbeda: 35.549 pada Juli 2021 dan 38.570 pada Agustus 2021, dibanding 4.013
+pada Februari 2022. Pulau Jawa menyumbang 68,5\% kasus, dengan DKI Jakarta
+(22,1\%) dan Jawa Barat (18,3\%) di urutan teratas. Sedangkan urutan CFR berbeda
+dari urutan jumlah kasus: CFR tertinggi ada di Lampung
+(5,55\%), Jawa Timur (5,28\%), dan Jawa Tengah (5,26\%), sedangkan DKI Jakarta
+hanya 1,10\% walaupun kasus per 100 ribu penduduknya tertinggi (13.023).
+
+Pengembangan lanjutan:
+
+\begin{itemize}[nosep]
+    \item Menambahkan data vaksinasi dan kapasitas rumah sakit, untuk menjelaskan perbedaan CFR antar provinsi.
+    \item Menjadwalkan \texttt{dbt build} sebagai task Airflow setelah \texttt{load\_data}, agar mart incremental terisi otomatis.
+\end{itemize}
+
+\end{document}

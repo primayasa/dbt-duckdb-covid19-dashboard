@@ -1,0 +1,33 @@
+$ dbt seed
+09:51:53  
+09:51:53  
+09:51:53  1 of 1 START seed file main.province_bps_codes ................................. [RUN]
+09:51:53  1 of 1 OK loaded seed file main.province_bps_codes ............................. [INSERT 34 in 0.06s]
+09:51:53  
+09:51:53  Finished running 1 seed in 0 hours 0 minutes and 0.15 seconds (0.15s).
+09:51:53  
+09:51:53  Completed successfully
+09:51:53  
+09:51:53  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+
+$ dbt run
+09:51:56  Running with dbt=1.12.5
+09:51:56  Registered adapter: duckdb=1.11.0
+09:51:58  Found 4 models, 24 data tests, 1 seed, 2 sources, 500 macros
+09:51:58  
+09:51:58  Concurrency: 1 threads (target='dev')
+09:51:58  
+09:51:58  1 of 4 START sql view model main.stg_airflow_monthly_summary ................... [RUN]
+09:51:58  1 of 4 OK created sql view model main.stg_airflow_monthly_summary .............. [OK in 0.09s]
+09:51:58  2 of 4 START sql view model main.stg_covid_daily ............................... [RUN]
+09:51:58  2 of 4 OK created sql view model main.stg_covid_daily .......................... [OK in 0.05s]
+09:51:58  3 of 4 START sql incremental model main.mart_covid_daily_province .............. [RUN]
+09:51:58  3 of 4 OK created sql incremental model main.mart_covid_daily_province ......... [OK in 0.09s]
+09:51:58  4 of 4 START sql table model main.mart_covid_monthly_province .................. [RUN]
+09:51:58  4 of 4 OK created sql table model main.mart_covid_monthly_province ............. [OK in 0.09s]
+09:51:58  
+09:51:58  Finished running 1 incremental model, 1 table model, 2 view models in 0 hours 0 minutes and 0.43 seconds (0.43s).
+09:51:58  
+09:51:58  Completed successfully
+09:51:58  
+09:51:58  Done. PASS=4 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=4
